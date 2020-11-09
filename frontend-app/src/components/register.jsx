@@ -33,10 +33,12 @@ function Register(props) {
                 else{
                     alert("Registration Unsuccessfull");
                 }
+            }).catch(err=>{
+                alert("Registration Unsuccessfull");
             })
         }
         else {
-
+            alert("Wrong Input");
         }
     }
     return (

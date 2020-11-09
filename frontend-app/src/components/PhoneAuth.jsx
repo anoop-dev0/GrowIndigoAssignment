@@ -13,8 +13,9 @@ class PhoneAuth extends Component {
   constructor(){
     super();
     this.state = {
-      form: true,
-      alert: false,
+      mobile:0,
+      otp:0,
+      disableOtp:true
     };
   }
   onChangeHandler = (event) => {
@@ -47,15 +48,15 @@ class PhoneAuth extends Component {
     firebase
       .auth()
       .signInWithPhoneNumber(phoneNumber, appVerifier)
-      .then(function (confirmationResult) {
-        // SMS sent. Prompt user to type the code from the message, then sign the
-        // user in with confirmationResult.confirm(code).
+      .then( (confirmationResult) => {
+
         window.confirmationResult = confirmationResult;
-        // console.log(confirmationResult);
-        console.log("OTP is sent");
+        this.setState({disableOtp:false})
+        alert("OTP is sent");
       })
       .catch(function (error) {
         console.log(error);
+        this.setState({disableOtp:true})
       });
   };
   onSubmitOtp = (e) => {
@@ -111,6 +112,7 @@ class PhoneAuth extends Component {
                     name="otp"
                     placeholder="OTP"
                     onChange={this.onChangeHandler}
+                    disabled={this.state.disableOtp}
                   />
                 </Form.Group>
                 <Button button="Submit" type="submit">Submit</Button>

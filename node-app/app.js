@@ -4,9 +4,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
+const cors = require('cors');
 require('dotenv').config();
 const uri = "mongodb+srv://dev0:dev0@kabracluster.ikkv0.mongodb.net/OrigaAI?retryWrites=true&w=majority";
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

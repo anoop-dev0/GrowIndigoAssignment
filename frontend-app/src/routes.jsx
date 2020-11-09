@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./components/home";
 import Login from "./components/logIn";
 import Register from "./components/register";
-import PhoneAuth from "./components/PhoneAuth";
+import PhoneAuth from "./components/phoneAuth";
 const routes = () => {
     return (
       <Fragment>
